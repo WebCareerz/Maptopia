@@ -1,21 +1,21 @@
 {
   "name": "Maptopia - Carte Interactive",
   "short_name": "Maptopia",
-  "start_url": "index.html",
+  "start_url": "indexfr.html",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#8b0000",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "resource/framboise.png",
+      "src": "maptopia.jpg",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/jpeg"
     },
     {
-      "src": "resource/framboise.png",
+      "src": "maptopia.jpg",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/jpeg"
     }
   ]
 }
