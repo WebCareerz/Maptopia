@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heartopia - Accueil</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#8b0000">
+    
+    <link rel="apple-touch-icon" href="resource/framboise.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Maptopia">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Raleway:wght@300&display=swap" rel="stylesheet">
@@ -62,9 +70,10 @@
         .unlocked { opacity: 0; visibility: hidden; pointer-events: none; }
 
 
-        /* --- 1. VIDEO DE FOND --- */
+        /* --- 1. VIDEO DE FOND (ACCÉLÉRÉE) --- */
         #video-wrapper {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+            /* Transition réduite à 1.5s au lieu de 3s */
             transition: transform 1.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
             transform-origin: center center;
         }
@@ -78,7 +87,7 @@
         .p2 { left: 90%; top: 100%; animation-duration: 15s; animation-delay: -5s; }
         @keyframes float { to { transform: translateY(-120vh); } }
 
-        /* --- 3. VIDEO PERSONNAGES --- */
+        /* --- 3. VIDEO PERSONNAGES (40%) --- */
         #char-wrapper {
             position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
             width: 100%; height: 40%; z-index: 8; pointer-events: none;
@@ -95,11 +104,13 @@
             pointer-events: none; transition: opacity 0.5s ease;
         }
 
+        /* --- ÉCRAN DE TRANSITION (ACCÉLÉRÉ) --- */
         #transition-screen {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: url('Heartopia.jpg') no-repeat center center fixed;
             background-size: cover;
             z-index: 100; opacity: 0; pointer-events: none;
+            /* Apparition plus rapide : 0.8s au lieu de 1.5s */
             transition: opacity 0.8s ease-in; 
         }
         body.animating #transition-screen { opacity: 1; }
@@ -197,9 +208,11 @@
             <a href="indexen.html" class="lang-card">English</a>
             <a href="indexfr.html" class="lang-card">Français</a>
             <a href="indexes.html" class="lang-card">Español</a>
+            
             <a href="indexde.html" class="lang-card">Deutsch</a>
             <a href="indexit.html" class="lang-card">Italiano</a>
             <a href="indexpo.html" class="lang-card">Português</a>
+
             <a href="indexch.html" class="lang-card">中文 (Chinese)</a>
             <a href="indexin.html" class="lang-card">Bahasa Indonesia</a>
             <a href="indexthai.html" class="lang-card">ไทย (Thai)</a>
@@ -279,6 +292,7 @@
                 }
             }, 100);
 
+            // Délai réduit à 1400ms
             setTimeout(() => { window.location.href = destination; }, 1400);
         }
 
