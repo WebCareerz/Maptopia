@@ -61,7 +61,7 @@ async function askRex() {
 
     try {
         // 3. APPEL DU FICHIER SECURISE (Le backend)
-        const response = await fetch("/.netlify/functions/talkToRex", {
+        const response = await fetch("/.netlify/functions/parlerToRex", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message: userText })
