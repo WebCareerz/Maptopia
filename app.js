@@ -1,100 +1,7 @@
-// --- CONFIGURATION API & DISCORD ---
-const COUNT_API_NAMESPACE = 'maptopia_heartopia_fr_v1';
-const COUNT_API_KEY = 'likes';
-const COUNT_API_URL_GET = `https://api.counterapi.dev/v1/${COUNT_API_NAMESPACE}/${COUNT_API_KEY}/up`;
-const COUNT_API_URL_READ = `https://api.counterapi.dev/v1/${COUNT_API_NAMESPACE}/${COUNT_API_KEY}/`;
-const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1453916227893334130/_yGCAjF1nsfVQwq3C1M4lWs8STwa26zdusGW__nIeQIEl-TJehlQaf7kvEJJFdoLh1y6";
-
 // Récupération sécurisée des textes (Fallback anglais/défaut si manquant)
 function getTxt(path, defaultTxt) {
     if (typeof TEXTS === 'undefined') return defaultTxt;
     return path.split('.').reduce((o, i) => (o ? o[i] : undefined), TEXTS) || defaultTxt;
-}
-
-// --- GESTION DES LIKES ---
-function initLikeSystem() {
-    const likeBtn = document.getElementById('like-btn-internal');
-    const likeCountSpan = document.getElementById('like-count-internal');
-   
-    fetch(COUNT_API_URL_READ)
-        .then(res => res.json())
-        .then(data => { likeCountSpan.innerText = data.count || 842; })
-        .catch(() => { likeCountSpan.innerText = "842"; });
-    
-    const isLiked = localStorage.getItem('maptopia_user_liked') === 'true';
-    if(isLiked) { lockLikeButton(likeBtn); }
-
-    window.toggleLikeInternal = function() {
-        if (likeBtn.classList.contains('liked')) return;
-        lockLikeButton(likeBtn);
-        localStorage.setItem('maptopia_user_liked', 'true');
-
-        fetch(COUNT_API_URL_GET)
-            .then(res => res.json())
-            .then(data => { likeCountSpan.innerText = data.count; });
-
-        sendLikeToDiscord();
-    };
-}
-
-function lockLikeButton(btn) {
-    btn.classList.add('liked');
-    btn.innerHTML = `<span class="heart-icon-anim">❤</span> ${getTxt('like.thankyou', 'MERCI !')}`;
-    btn.title = getTxt('like.already', "Vous avez déjà voté !");
-    btn.style.cursor = "default";
-}
-
-function sendLikeToDiscord() {
-    const payload = { username: "Maptopia Votes", content: "❤️ **Un utilisateur vient d'aimer la carte !**" };
-    fetch(DISCORD_WEBHOOK_URL, {
-        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload)
-    }).catch(console.error);
-}
-
-// --- GESTION DU CHAT / CONTACT ---
-function toggleChat() {
-    const box = document.getElementById('simple-chat-box');
-    box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
-}
-
-function sendToDiscord() {
-    const name = document.getElementById('user-name').value.trim();
-    const msg = document.getElementById('user-msg').value.trim();
-    const status = document.getElementById('chat-status');
-    const userLang = navigator.language || navigator.userLanguage;
-
-    if(name === "" || msg === "") {
-        status.innerText = getTxt('chat.incomplete', "⚠️ Veuillez remplir tous les champs.");
-        status.style.color = "#ff5555";
-        return;
-    }
-
-    status.innerText = getTxt('chat.wait', "Envoi en cours...");
-    status.style.color = "#aaa";
-    
-    const payload = {
-        username: "Maptopia Contact",
-        content: `**Nouveau message reçu !**\n👤 **De:** ${name}\n🌍 **Langue détectée:** ${userLang}\n💬 **Message:**\n${msg}`
-    };
-    fetch(DISCORD_WEBHOOK_URL, {
-        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload)
-    })
-    .then(response => {
-        if(response.ok) {
-            status.innerText = getTxt('chat.success', "✅ Message envoyé avec succès !");
-            status.style.color = "#55ff55";
-            document.getElementById('user-msg').value = "";
-            setTimeout(() => { toggleChat(); status.innerText = ""; }, 2000);
-        } else {
-            status.innerText = getTxt('chat.error', "❌ Erreur lors de l'envoi.");
-            status.style.color = "#ff5555";
-        }
-    })
-    .catch(err => {
-         console.error(err);
-        status.innerText = "❌ Erreur de connexion.";
-        status.style.color = "#ff5555";
-    });
 }
 
 // --- NAVIGATION & UI ---
@@ -108,16 +15,6 @@ function toggleMobileLegend() {
     legend.classList.toggle('mobile-visible');
     if(legend.classList.contains('mobile-visible')) document.getElementById('main-menu').classList.remove('mobile-visible');
 }
-function startExperience() {
-    document.getElementById('main-audio').play().catch(() => {});
-    document.getElementById('intro-screen').style.opacity = '0';
-    document.getElementById('map').style.opacity = '1';
-    setTimeout(() => {
-        document.getElementById('intro-screen').style.display = 'none';
-        document.getElementById('welcome-modal').style.display = 'flex';
-    }, 800);
-}
-function closeWelcome() { document.getElementById('welcome-modal').style.display = 'none'; }
 
 // --- CONFIGURATION CARTE ---
 var bounds = [[-1000, 0], [0, 1000]];
@@ -126,6 +23,48 @@ L.imageOverlay('carte.png', bounds).addTo(map);
 map.setView([-500, 500], 1);
 map.on('zoomstart', () => { document.body.classList.add('is-zooming'); });
 map.on('zoomend', () => { document.body.classList.remove('is-zooming'); });
+
+// --- ZOOM CONTROL ---
+const DEFAULT_ZOOM = 1;
+const DEFAULT_CENTER = [-500, 500];
+
+function createZoomControl() {
+    const container = document.createElement('div');
+    container.id = 'zoom-control';
+    container.innerHTML = `
+        <button class="zoom-btn" onclick="zoomIn()" title="Zoom In">+</button>
+        <span id="zoom-level">x${map.getZoom().toFixed(1)}</span>
+        <button class="zoom-btn" onclick="zoomOut()" title="Zoom Out">−</button>
+        <button class="zoom-reset" onclick="resetZoom()" title="Reset View">⌂</button>
+    `;
+    document.body.appendChild(container);
+}
+
+function updateZoomDisplay() {
+    const zoomLevel = document.getElementById('zoom-level');
+    if (zoomLevel) {
+        zoomLevel.textContent = 'x' + map.getZoom().toFixed(1);
+    }
+}
+
+function zoomIn() {
+    if (map.getZoom() < map.getMaxZoom()) {
+        map.zoomIn();
+    }
+}
+
+function zoomOut() {
+    if (map.getZoom() > map.getMinZoom()) {
+        map.zoomOut();
+    }
+}
+
+function resetZoom() {
+    map.setView(DEFAULT_CENTER, DEFAULT_ZOOM);
+}
+
+map.on('zoomend', updateZoomDisplay);
+createZoomControl();
 
 // --- VARIABLES GLOBALES ---
 const colors = { rouge: '#e74c3c', bleu: '#3498db', vert: '#2ecc71', jaune: '#f1c40f', violet: '#9b59b6', orange: '#e67e22' };
@@ -262,7 +201,6 @@ function loadExternalData() {
     if(albert) startAlbertPatrol(albert.marker, 0);
     userPings.forEach(p => createFinalMarker(p));
     updateUserLegend();
-    initLikeSystem();
 }
 
 function initMenu() {

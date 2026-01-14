@@ -26,75 +26,6 @@
     <button id="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
     <button id="mobile-legend-toggle" onclick="toggleMobileLegend()">📌</button>
 
-    <div id="intro-screen">
-        <a href="https://heartopia.xd.com/en" target="_blank" class="official-link-text" title="Heartopia 官方网站">
-            HEARTOPIA 官方链接
-        </a>
-
-        <h1 class="heartopia-title">MAPTOPIA 中文</h1>
-        <div class="welcome-box">
-            <p>探索 Heartopia 社区的官方互动地图。</p>
-            <div class="btn-container">
-                <button id="enter-button" class="btn-magic" onclick="startExperience()">✨ 进入地图 ✨</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="welcome-modal">
-        <div class="welcome-content">
-            <div class="welcome-header">亲爱的 HEARTOPIA 玩家</div>
-            <div class="welcome-text">
-                欢迎来到 **Maptopia**，探索 Heartopia 的最佳伙伴！<br>
-             
-                <div class="details-list">
-                    • <b>导航：</b> 左侧紧凑菜单用于筛选。<br>
-                    <span class="pc-only">• <b>标记：</b> <b>右键点击</b> 可添加自定义标记。<br></span>
-                    • <b>收藏：</b> 在“鱼类”、“昆虫”和“鸟类”菜单中勾选框以追踪进度。<br>
-                    • <b>资源：</b> 新功能！地图上显示采集区域（木材、矿石、水果）。<br>
-                    • <b>联系：</b> 使用右下角的 💬 气泡向团队发送私信。<br>
-                    • <b>邮件：</b> 您也可以写信至 <b>maptopiafr@gmail.com</b>。<br>
-                    • <b>备份：</b> 您的数据保存在这里。
-                </div>
-
-                <div class="welcome-note">
-                    🐾 <b>关于移动的说明：</b><br>
-                    动物的移动是虚拟的，但基于它们的实际区域。
-                    Albert Jr. 在村庄漫游以指引您。
-                </div>
-                🛠️ <b>项目状态：</b><br>
-                本网站目前正在开发中。
-            </div>
-            <button class="btn-rex" onclick="closeWelcome()">开始探索！</button>
-        </div>
-    </div>
-
-    <div id="social-container">
-        <div id="contact-trigger" onclick="toggleChat()">💬</div>
-        <a href="https://discord.gg/CGqNppubHv" target="_blank" title="加入 Discord" id="discord-link-wrapper">
-            <img src="Discord-Logo-PNG-Pic.png" id="discord-img" class="social-btn-img" alt="Discord">
-        </a>
-    </div>
-
-    <div id="simple-chat-box">
-        <div class="chat-header">
-            <span>联系团队</span>
-            <button class="close-chat" onclick="toggleChat()">X</button>
-        </div>
-        <div class="chat-form">
-            <label class="chat-label">您的 DISCORD 名称 (用于回复)</label>
-            <input type="text" id="user-name" class="chat-input" placeholder="例如: Rex#1234">
-
-            <label class="chat-label">您的留言</label>
-            <textarea id="user-msg" class="chat-textarea" placeholder="有想法？发现错误？告诉我们..."></textarea>
-
-            <button class="chat-submit" onclick="sendToDiscord()">发送</button>
-            <div id="chat-status"></div>
-
-            <div class="chat-footer-mail">
-                或发送邮件：<a href="mailto:maptopiafr@gmail.com?subject=Contact%20Maptopia">maptopiafr@gmail.com</a>
-            </div>
-        </div>
-    </div>
 
     <div class="ping-legend" id="legend-box">
         <div class="language-selector legend-langs" style="margin-bottom: 10px; display: flex; gap: 8px; justify-content: center;">
@@ -110,15 +41,6 @@
             <div class="guide-row"><span class="guide-icon">📱</span><span><b>手机：</b> 左上角菜单</span></div>
         </div>
 
-        <div class="rating-container">
-            <div class="like-section">
-                <button id="like-btn-internal" class="like-btn-internal" onclick="toggleLikeInternal()">
-                    <span class="heart-icon-anim">❤</span> 点赞地图
-                </button>
-                <span id="like-count-internal">加载中...</span>
-            </div>
-            <p style="font-size:9px; color:#777; margin-top:5px;">(点击支持！)</p>
-        </div>
         <div class="quiz-section">
             <p style="font-size:10px; color:#aaa; margin-bottom:5px; text-align:center;">测试你的知识</p>
             <div style="display: flex; justify-content: center;">

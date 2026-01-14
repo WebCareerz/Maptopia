@@ -10,11 +10,9 @@ body, html {
 }
 
 /* La carte prend tout l'écran */
-#map { 
-    height: 100vh; width: 100vw; 
-    background: #1a1a1a; 
-    opacity: 0; 
-    transition: opacity 1s ease; 
+#map {
+    height: 100vh; width: 100vw;
+    background: #1a1a1a;
 }
 
 /* --- 2. ECRAN D'ACCUEIL (INTRO) --- */
@@ -312,4 +310,81 @@ body, html {
     #simple-chat-box { width: 280px; bottom: 80px; right: 10px; }
     .welcome-content { padding: 15px; width: 95%; }
     .welcome-header { font-size: 20px; }
+}
+
+/* --- ZOOM CONTROL --- */
+#zoom-control {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 8px 12px;
+    border-radius: 50px;
+    border: 2px solid #d4af37;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+#zoom-control button {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+#zoom-control button:hover {
+    transform: scale(1.1);
+}
+
+#zoom-control .zoom-btn {
+    background: #d4af37;
+    color: #000;
+}
+
+#zoom-control .zoom-btn:hover {
+    background: #fff;
+}
+
+#zoom-control .zoom-reset {
+    background: #8b0000;
+    color: #fff;
+}
+
+#zoom-control .zoom-reset:hover {
+    background: #a00;
+}
+
+#zoom-level {
+    color: #d4af37;
+    font-size: 14px;
+    font-weight: bold;
+    min-width: 60px;
+    text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    #zoom-control {
+        bottom: 70px;
+        padding: 6px 10px;
+    }
+    #zoom-control button {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+    #zoom-level {
+        font-size: 12px;
+        min-width: 50px;
+    }
 }

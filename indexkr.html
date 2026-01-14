@@ -26,76 +26,6 @@
     <button id="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
     <button id="mobile-legend-toggle" onclick="toggleMobileLegend()">📌</button>
 
-    <div id="intro-screen">
-        <a href="https://heartopia.xd.com/en" target="_blank" class="official-link-text" title="Heartopia 공식 사이트">
-            Heartopia 공식 커뮤니티 지도 탐험
-        </a>
-
-        <h1 class="heartopia-title">MAPTOPIA KR</h1>
-        <div class="welcome-box">
-            <p>Heartopia 커뮤니티의 공식 인터랙티브 지도를 탐험하세요.</p>
-            <div class="btn-container">
-                <button id="enter-button" class="btn-magic" onclick="startExperience()">✨ 지도 입장 ✨</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="welcome-modal">
-        <div class="welcome-content">
-            <div class="welcome-header">친애하는 하토피아인 여러분</div>
-            <div class="welcome-text">
-                <b>Maptopia</b>에 오신 것을 환영합니다! Heartopia 탐험을 위한 최고의 동반자입니다.<br>
-             
-                <div class="details-list">
-                    • <b>탐색:</b> 왼쪽의 간소한 메뉴로 필터링하세요.<br>
-                    <span class="pc-only">• <b>마커:</b> <b>우클릭</b>으로 나만의 지점을 표시하세요.<br></span>
-                    • <b>도감:</b> "물고기", "곤충", "새" 메뉴의 체크박스로 진행 상황을 추적하세요.<br>
-                    • <b>자원:</b> 새로운 기능! 채집 구역(나무, 광석, 과일)이 지도에 표시됩니다.<br>
-                    • <b>문의:</b> 오른쪽 하단의 💬 말풍선을 사용하여 팀에게 비공개 메시지를 보내세요.<br>
-                    • <b>이메일:</b> <b>maptopiafr@gmail.com</b>으로도 연락하실 수 있습니다.<br>
-                    • <b>백업:</b> 데이터는 이곳에 저장됩니다.
-                </div>
-
-                <div class="welcome-note">
-                    🐾 <b>이동 관련 참고:</b><br>
-                    동물들의 움직임은 가상이지만 실제 서식지를 기반으로 합니다.
-                    Albert Jr.가 마을을 순찰하며 안내합니다.
-                </div>
-                🛠️ <b>프로젝트 상태:</b><br>
-                이 사이트는 현재 개발 중입니다.
-            </div>
-            <button class="btn-rex" onclick="closeWelcome()">출발!</button>
-        </div>
-    </div>
-
-    <div id="social-container">
-        <div id="contact-trigger" onclick="toggleChat()">💬</div>
-        <a href="https://discord.gg/CGqNppubHv" target="_blank" title="Discord 참여" id="discord-link-wrapper">
-            <img src="Discord-Logo-PNG-Pic.png" id="discord-img" class="social-btn-img" alt="Discord">
-        </a>
-    </div>
-
-    <div id="simple-chat-box">
-        <div class="chat-header">
-            <span>팀에게 연락하기</span>
-            <button class="close-chat" onclick="toggleChat()">X</button>
-        </div>
-        <div class="chat-form">
-            <label class="chat-label">디스코드 이름 (답변용)</label>
-            <input type="text" id="user-name" class="chat-input" placeholder="예: Rex#1234">
-
-            <label class="chat-label">메시지</label>
-            <textarea id="user-msg" class="chat-textarea" placeholder="아이디어가 있나요? 오류를 발견했나요? 알려주세요..."></textarea>
-
-            <button class="chat-submit" onclick="sendToDiscord()">전송</button>
-            <div id="chat-status"></div>
-
-            <div class="chat-footer-mail">
-                또는 이메일로: <a href="mailto:maptopiafr@gmail.com?subject=Contact%20Maptopia">maptopiafr@gmail.com</a>
-            </div>
-        </div>
-    </div>
-
     <div class="ping-legend" id="legend-box">
         <div class="language-selector legend-langs" style="margin-bottom: 10px; display: flex; gap: 8px; justify-content: center;">
             <a href="index.html" class="btn-lang-switch">🌍 언어 변경</a>
@@ -110,15 +40,6 @@
             <div class="guide-row"><span class="guide-icon">📱</span><span><b>모바일:</b> 왼쪽 상단 메뉴</span></div>
         </div>
 
-        <div class="rating-container">
-            <div class="like-section">
-                <button id="like-btn-internal" class="like-btn-internal" onclick="toggleLikeInternal()">
-                    <span class="heart-icon-anim">❤</span> 좋아요
-                </button>
-                <span id="like-count-internal">로딩 중...</span>
-            </div>
-            <p style="font-size:9px; color:#777; margin-top:5px;">(클릭하여 후원해주세요!)</p>
-        </div>
         <div class="quiz-section">
             <p style="font-size:10px; color:#aaa; margin-bottom:5px; text-align:center;">지식 테스트</p>
             <div style="display: flex; justify-content: center;">

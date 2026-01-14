@@ -26,75 +26,6 @@
     <button id="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
     <button id="mobile-legend-toggle" onclick="toggleMobileLegend()">📌</button>
 
-    <div id="intro-screen">
-        <a href="https://heartopia.xd.com/en" target="_blank" class="official-link-text" title="Site Officiel Heartopia">
-            LIEN OFFICIEL HEARTOPIA
-        </a>
-
-        <h1 class="heartopia-title">MAPTOPIA FR</h1>
-        <div class="welcome-box">
-            <p>Explorez la carte interactive officielle de la communauté Heartopia.</p>
-            <div class="btn-container">
-                <button id="enter-button" class="btn-magic" onclick="startExperience()">✨ ENTRER SUR LA CARTE ✨</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="welcome-modal">
-        <div class="welcome-content">
-            <div class="welcome-header">CHERS HEARTOPIENS</div>
-            <div class="welcome-text">
-                Bienvenue sur <b>Maptopia</b>, votre compagnon pour explorer Heartopia !<br>
-             
-                <div class="details-list">
-                    • <b>Navigation :</b> Menu compact sur la gauche pour filtrer.<br>
-                    <span class="pc-only">• <b>Marqueurs :</b> <b>Clic Droit</b> pour épingler vos propres points.<br></span>
-                    • <b>Collection :</b> Cochez les cases dans les menus "Poissons", "Insectes" et "Oiseaux" pour suivre votre progression.<br>
-                    • <b>Ressources :</b> NOUVEAU ! Les zones de récolte (Bois, Minerai, Fruits) sont affichées sur la carte.<br>
-                    • <b>Contact :</b> Utilisez la bulle 💬 en bas à droite pour envoyer un message privé à l'équipe.<br>
-                    • <b>Email :</b> Vous pouvez aussi nous écrire à <b>maptopiafr@gmail.com</b>.<br>
-                    • <b>Sauvegarde :</b> Vos données sont enregistrées ici.
-                </div>
-
-                <div class="welcome-note">
-                    🐾 <b>NOTE SUR LES DÉPLACEMENTS :</b><br>
-                    Les mouvements des animaux sont fictifs mais basés sur leurs zones réelles.
-                    Albert Jr. parcourt le village pour vous guider.
-                </div>
-                🛠️ <b>STATUT DU PROJET :</b><br>
-                Ce site est actuellement en cours de développement.
-            </div>
-            <button class="btn-rex" onclick="closeWelcome()">C'EST PARTI !</button>
-        </div>
-    </div>
-
-    <div id="social-container">
-    <div id="contact-trigger" onclick="toggleChat()">💬</div>
-    <a href="https://discord.gg/CGqNppubHv" target="_blank" title="Rejoindre le Discord" id="discord-link-wrapper">
-        <img src="Discord-Logo-PNG-Pic.png" id="discord-img" class="social-btn-img" alt="Discord">
-    </a>
-</div>
-
-    <div id="simple-chat-box">
-        <div class="chat-header">
-            <span>CONTACTER L'ÉQUIPE</span>
-            <button class="close-chat" onclick="toggleChat()">X</button>
-        </div>
-        <div class="chat-form">
-            <label class="chat-label">VOTRE NOM DISCORD (Pour la réponse)</label>
-            <input type="text" id="user-name" class="chat-input" placeholder="Ex: Rex#1234">
-
-            <label class="chat-label">VOTRE MESSAGE</label>
-            <textarea id="user-msg" class="chat-textarea" placeholder="Une idée ? Un bug ? Dites-nous tout..."></textarea>
-
-            <button class="chat-submit" onclick="sendToDiscord()">ENVOYER</button>
-            <div id="chat-status"></div>
-
-            <div class="chat-footer-mail">
-                Ou par email : <a href="mailto:maptopiafr@gmail.com?subject=Contact%20Maptopia">maptopiafr@gmail.com</a>
-            </div>
-        </div>
-    </div>
 
     <div class="ping-legend" id="legend-box">
         <div class="language-selector legend-langs" style="margin-bottom: 10px; display: flex; gap: 8px; justify-content: center;">
@@ -108,15 +39,6 @@
             <div class="guide-row"><span class="guide-icon">📱</span><span><b>Mobile :</b> Menu en haut à gauche</span></div>
         </div>
 
-        <div class="rating-container">
-            <div class="like-section">
-                <button id="like-btn-internal" class="like-btn-internal" onclick="toggleLikeInternal()">
-                    <span class="heart-icon-anim">❤</span> AIMER LA CARTE
-                </button>
-                <span id="like-count-internal">Chargement...</span>
-            </div>
-            <p style="font-size:9px; color:#777; margin-top:5px;">(Cliquez pour nous soutenir !)</p>
-        </div>
         <div class="quiz-section">
             <p style="font-size:10px; color:#aaa; margin-bottom:5px; text-align:center;">TESTEZ VOS CONNAISSANCES</p>
             <div style="display: flex; justify-content: center;">
