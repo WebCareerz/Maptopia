@@ -19,7 +19,7 @@ body, html {
 #intro-screen {
     position: fixed; top: 0; left: 0; 
     width: 100vw; height: 100vh; 
-    background: url('Heartopia.jpg') no-repeat center center; 
+    background: url('Heartopia.webp') no-repeat center center; 
     background-size: cover; 
     z-index: 20000; 
     display: flex; flex-direction: column; 

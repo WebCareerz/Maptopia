@@ -3,3 +3,11 @@
 node_modules
 
 .DS_Store
+.env
+
+# 部署脚本（不需要部署到 R2）
+package.json
+package-lock.json
+upload-r2.js
+sync-r2.js
+convert-to-webp.js
